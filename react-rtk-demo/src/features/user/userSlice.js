@@ -10,13 +10,13 @@ const initialState = {
 //invoke the asyncthunk function.
 //basically fetching the users.
 //will generate a promise (pending, fullfilled or rejected).
-const fetchUsers = createAsyncThunk('user/fetchUsers', () => {
+export const fetchUsers = createAsyncThunk('user/fetchUsers', () => {
 	return axios
 		.get('https://jsonplaceholder.typicode.com/users')
-		.then(response => response.data.map(user => user.id))
+		.then(response => response.data)
 })
 
-const userSlice = createSlice({
+export const userSlice = createSlice({
 	name: 'user',
 	initialState,
 	extraReducers: builder => {
@@ -38,5 +38,4 @@ const userSlice = createSlice({
 })
 
 //export the reducer and the async function.
-module.exports = userSlice.reducer
-module.exports.fetchUsers = fetchUsers
+export default userSlice.reducer

@@ -1,7 +1,7 @@
-const { createSlice } = require('@reduxjs/toolkit')
+import { createSlice } from '@reduxjs/toolkit'
 
 //get the action cake function.
-const { cakeActions } = require('../cake/cakeSlice')
+import { ordered as cakeOrdered } from '../cake/cakeSlice'
 
 //create the initial reducer.
 const initialState = {
@@ -10,7 +10,7 @@ const initialState = {
 
 //create the slice.
 const iceCreamSlice = createSlice({
-	name: 'IceCream',
+	name: 'iceCream',
 	initialState,
 	reducers: {
 		orderIceCream: state => {
@@ -28,14 +28,14 @@ const iceCreamSlice = createSlice({
 	// },
 
 	extraReducers: builder => {
-		builder.addCase(cakeActions.ordered, state => {
+		builder.addCase(cakeOrdered, state => {
 			state.numberOfIceCreams--
 		})
 	},
 })
 
 //export the data to the store.
-module.exports = iceCreamSlice.reducer
+export default iceCreamSlice.reducer
 
 //goes to the undex page actions = index page
-module.exports.iceCreamActions = iceCreamSlice.actions
+export const { orderIceCream, restockIceCream } = iceCreamSlice.actions
