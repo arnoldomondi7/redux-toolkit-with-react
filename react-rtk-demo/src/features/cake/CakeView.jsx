@@ -13,7 +13,7 @@ const CakeView = () => {
 	return (
 		<div>
 			<h2> Number of Cakes - {numOfCakes} </h2>
-			<button onClick={() => dispatch(ordered())}>Order Cakes</button>
+			<button onClick={() => dispatch(ordered(2))}>Order Cakes</button>
 			<button onClick={() => dispatch(restocked(5))}>Restock Cakes</button>
 		</div>
 	)
