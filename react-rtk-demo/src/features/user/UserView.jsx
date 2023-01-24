@@ -8,6 +8,8 @@ const UserView = () => {
 	//handle the useselect hook.
 	const user = useSelector(state => state.user)
 
+	// console.log(user)
+
 	useEffect(() => {
 		dispatch(fetchUsers())
 	}, [])
@@ -24,8 +26,8 @@ const UserView = () => {
 
 			{/* show data on the user interface */}
 
-			{!user.loading && user.users.length ? (
-				<ul>
+			{!user.loading && user.users.length > 0 ? (
+				<ul style={{ listStyle: 'none' }}>
 					{user.users.map((user, i) => (
 						<li key={i}>{user.name}</li>
 					))}

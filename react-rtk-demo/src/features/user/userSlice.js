@@ -10,13 +10,14 @@ const initialState = {
 //invoke the asyncthunk function.
 //basically fetching the users.
 //will generate a promise (pending, fullfilled or rejected).
-export const fetchUsers = createAsyncThunk('user/fetchUsers', () => {
-	return axios
+//take the fetchusers as an a ctionCreator.
+export const fetchUsers = createAsyncThunk('user/fetchUsers', async () => {
+	return await axios
 		.get('https://jsonplaceholder.typicode.com/users')
 		.then(response => response.data)
 })
 
-export const userSlice = createSlice({
+const userSlice = createSlice({
 	name: 'user',
 	initialState,
 	extraReducers: builder => {
